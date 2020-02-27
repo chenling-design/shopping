@@ -1,0 +1,168 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<style type="text/css">
+			#myForm1{
+				border: 0px solid gainsboro;
+				margin:0px auto;
+				width: 300px;
+			}
+			#myForm{
+				margin:0px auto;
+			}
+			#name1,#pwd1,#pwd2,#pwd3,#yanzhengma,#phone,#zc{
+				border: 1px solid darkgray;
+				width: 300px;
+				height: 50PX;
+				margin: 0px auto;
+			}
+			input{
+				height: 40px;
+				outline:medium;
+				border: none;
+			}
+			/*弹出层*/
+			#dialog1 {
+	            position:fixed;
+	            color: gray;
+	            width:400px;
+	            height:10px;
+	            display:none;
+	            font-size: 12px;
+        	}
+		</style>
+		<script type="text/javascript">
+			//失去焦点，获得焦点
+			function f1(name){
+				name.placeholder = "";
+			}
+			function f2(name){
+				name.placeholder = "请填写用户名";
+			}
+			function f3(shuzi){
+				shuzi.placeholder = "";
+			}
+			function f4(shuzi){
+				shuzi.placeholder = "请输入密码";
+			}
+			function f5(shuzi){
+				shuzi.placeholder = "";
+			}
+			function f6(shuzi){
+				shuzi.placeholder = "请再次输入密码";
+			}
+			function f7(shuzi){
+				shuzi.placeholder = "";
+			}
+			function f8(shuzi){
+				shuzi.placeholder = "建议使用常用手机";
+			}
+			function f9(shuzi){
+				shuzi.placeholder = "";
+			}
+			function f10(shuzi){
+				shuzi.placeholder = "请输入验证码";
+			}
+			function f11(shuzi){
+				shuzi.placeholder = "";
+			}
+			function f12(shuzi){
+				shuzi.placeholder = "请输入手机验证码";
+			}
+//			弹出层1
+			window.onload = function(){
+            document.onclick = function(e1){
+                e1 = e1 || window.event;
+                var dom =  e1.srcElement|| e1.target;
+                if(dom.id != "dialog1" && document.getElementById("dialog1").style.display == "block") {
+                    document.getElementById("dialog1").style.display = "none";
+                }
+            };
+        };
+        function openDialog1(e1) {
+            document.getElementById("dialog1").style.display = "block";
+            e1 = e1||window.event;
+            if(+'\v1') {
+                e1.stopPropagation();
+            } else  {
+                e1.cancelBubble = true;
+            }
+             
+        }
+        
+		</script>
+	</head>
+	<body>
+		<div id="myForm1">
+		<form id="myForm" action="success.html">
+			<div id="name1">
+			<label>用户名：</label>
+			<input type="text" id="name" onclick="openDialog1(event)" maxlength="20" onblur="f2(this)" onfocus="f1(this)" placeholder="请填写用户名" />
+			</div>
+		    <div id="dialog1">
+		        	!支持中文、字母、数字、"-"、"_"的组合，4-20个字符
+		    </div>
+			
+			<br />
+			<div id="pwd1">
+			<label>设置密码：</label>
+			<input type="password" id="shuzi1" onblur="f4(this)" onfocus="f3(this)" placeholder="请输入密码" />
+			</div>
+			<div id="dialog2" style="height: 10px;">
+		        	
+		    </div>
+			<br />
+			<div id="pwd2">
+			<label>确认密码：</label>
+			<input type="password" id="shuzi2" onblur="f6(this)" onfocus="f5(this)" placeholder="请再次输入密码" />
+			
+			</div>
+			<div id="dialog3" style="height: 10px;">
+		        	
+		    </div>
+			<br />
+			<div id="pwd3">
+			<label>
+				中国0086
+				<select id="select1">
+					<option>1</option>
+					<option>2</option>
+				</select>
+			</label>
+			<input type="password" id="shuzi3" onblur="f8(this)" onfocus="f7(this)" placeholder="建议使用常用手机" />
+			
+	`		</div>
+			<div id="dialog4" style="height: 10px;">
+		        	
+		    </div>
+			<br />
+			<div id="yanzhengma">
+				<label>验证码：</label>
+				<input type="text" id="yan" onblur="f10(this)" onfocus="f9(this)" placeholder="请输入验证码" />
+				
+			</div>
+			<div id="dialog5" style="height: 10px;">
+		        	
+		    </div>
+			<br />
+			<div id="phone">
+				<label>手机验证码：</label>
+				<input type="text" id="phone1" onblur="f12(this)" onfocus="f11(this)" placeholder="请输入手机验证码" />
+				
+			</div>
+			<div id="dialog6" style="height: 10px;">
+		        	
+		    </div>
+			<br />
+			<div id="zhuce">
+				<button type="submit" id="zc" value="立即注册" style="width: 300px; height: 30px; margin: 0px auto;">立即注册</button>
+			</div>
+		</form>
+	</div>
+	</body>
+</html>

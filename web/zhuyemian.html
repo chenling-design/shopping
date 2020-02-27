@@ -1,0 +1,540 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+<style type="text/css">
+#all{
+	width: 1000px;
+	margin: 0 auto;
+}
+#header {
+    height: 230px;
+    background-color: gainsboro;
+}
+#nav {
+    line-height:30px;
+    background-color:royalblue;
+    height:496px;
+    width:176px;
+    float:left;
+    border: 2px;
+}
+#main {
+    width:636px;
+    height: 496px;
+    float:left;
+    border: 2px;
+}
+#right{
+	width: 178px;
+	float: right;
+	height: 496px;
+	border: 2px;
+}
+#daojishi {
+    background-color:red;
+    color:white;
+    height: 38px;
+    clear: both;
+    border: 2px;
+}
+#footer{
+	background-color: wheat;
+	height: 200px;
+}
+#main_left{
+	float: left;
+	width: 306px;
+	height: 196px;
+	border: 2px;
+}
+#main_right{
+	float: right;
+	background-color: red;
+	width: 306px;
+	height: 196px;
+	border: 2px;
+}
+#tab1{ 
+	overflow:hidden; 
+	height: 296px;
+	width: 636px;
+	position:relative;
+	margin: 2px auto; 
+}
+#a {
+	height: 296px;
+	width: 636px;
+}
+#picture {
+	position: absolute;
+	bottom: 10px;
+	left: 245px;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+#y {
+	text-align: center;
+	height: 10px;
+	width: 10px;
+	float:  left;
+	margin: 4px;
+	background-color: white;
+	border-radius: 8px;
+}
+#y:hover {	/*鼠标悬停*/
+	background-color: red;
+}
+#sousuo{
+	margin: 10px auto;
+}
+#leftBar {
+	height: 496px;
+	width: 176px;
+	background-color: gray;				
+	}
+#leftBar ul {
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+}			
+#leftBar li {
+	display: inline;
+}
+#leftBar a {
+	display: block;
+	line-height: 35px;
+	height: 35px;
+	text-align: center;
+	font-size: 13px;
+	text-decoration: none;
+}
+#leftBar>ul>li>a:hover {
+	color: red;
+	background-color: #A9A9A9;
+}					
+#leftBar>ul>li>ul>li>a:hover {
+	color: yellow;
+	background-color: burlywood;
+}			
+#leftBar>ul>li>a {
+	color: white;
+}
+#leftBar>ul>li>ul{
+	display: none;
+}
+#leftBar>ul>li>ul>li>a{
+	color: grey;
+}
+#leftBar>ul>li:hover>ul{/*子菜单下拉界面*/
+	display: block;
+	margin-left: 176px;
+	height: 496px;
+	width: 824px;
+	position: absolute;
+	z-index: 999;
+	background-color: white;
+}
+#header1{
+	float: left;
+}
+#header2{
+	float: right;
+}
+#c{
+	height: 150px;
+	width: 150px;
+	margin: 20px 20px 20px 20px;
+	border: 2px solid chocolate;
+}
+#c:hover{
+	height: 155px;
+	width: 155px;
+}
+#t_h,#t_m,#t_s{
+	background-color: black;
+	color: white;
+	font-size: 23px;
+	font-family: "arial black";
+	border-radius: 5px;
+}
+</style>
+<!--图片轮播js-->
+<script type="text/javascript">
+			var flag = 1;
+			var arr =[
+				"1.jpg",
+				"2.jpg", 
+				"3.jpg", 
+				"4.jpg",
+				"5.jpg",
+				"6.jpg",
+				"7.jpg",
+				"8.jpg"
+			];
+			
+			function changeImage(index){
+				var obj = document.getElementById("myImg");
+				obj.src= "../img/" + arr[index];
+				flag = (index+1)% arr.length;	// 这句解决图片变动后，后继的标号的问题；
+			}
+			
+			// 顺序播放；
+			function timeChange(){
+				changeImage(flag);
+				flag = (flag+ 1) % arr.length;
+			}
+			
+			//随机播放；
+			function randomChange(){
+				flag = Math.floor(Math.random()*8);
+				changeImage(flag);
+			}
+						
+			// 间隔；
+			setInterval("randomChange()", 3000);
+			
+			
+		</script>
+		<!--倒计时-->
+		<script type="text/javascript"> 
+				function getRTime(){ 
+				var EndTime= new Date('2018/1/11 00:00:00'); //截止时间 
+				var NowTime = new Date(); //现在时间
+				var t =EndTime.getTime() - NowTime.getTime(); //剩余时间
+				 
+				var h=Math.floor(t/1000/60/60%24); 
+				var m=Math.floor(t/1000/60%60); 
+				var s=Math.floor(t/1000%60); 
+				 
+				document.getElementById("t_h").innerHTML = h; 
+				document.getElementById("t_m").innerHTML = m; 
+				document.getElementById("t_s").innerHTML = s; 
+				} 
+				setInterval(getRTime,1000); 
+			</script>
+	</head>
+	<body>
+		<div id="all">
+		<div id="header">
+			<a href="#">
+			<img src="../img/header.JPG" style="height: 50px; width: 1000px;" />
+			</a>
+			<div id="header1">
+			<a href="#">
+			<img src="../img/京东.JPG" style="height: 176px; width: 176px;" />
+			</a>
+			</div>
+			<div id="header2">
+			<img src="../img/picture4.png" style="height: 176px; width: 822px;" />
+			</div>
+		</div>
+
+		<div id="nav">
+			<div id="leftBar">
+			<ul>
+				<li>
+					<a href="#">家用电器</a>
+					<ul style="margin-top: -36px;">
+						<li><a href="#">电视 电视 电视 电视电视 电视 电视 电视</a></li>
+						<li><a href="#">洗衣机</a></li>
+						<li><a href="#">微波炉</a></li>
+						<li><a href="#">冰箱</a></li>
+						<li><a href="#">电视</a></li>
+						<li><a href="#">洗衣机</a></li>
+						<li><a href="#">微波炉</a></li>
+						<li><a href="#">冰箱</a></li>
+						<li><a href="#">电视</a></li>
+						<li><a href="#">洗衣机</a></li>
+						<li><a href="#">微波炉</a></li>
+						<li><a href="#">冰箱</a></li>
+						<li><a href="#">洗衣机</a></li>
+						<li><a href="#">微波炉</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">手机/运营商/数码</a>
+					<ul style="margin-top: -71px;">
+						<li><a href="#">对讲机</a></li>
+						<li><a href="#">宽带</a></li>
+						<li><a href="#">数据线</a></li>
+						<li><a href="#">对讲机</a></li>
+						<li><a href="#">宽带</a></li>
+						<li><a href="#">数据线</a></li>
+						<li><a href="#">对讲机</a></li>
+						<li><a href="#">宽带</a></li>
+						<li><a href="#">数据线</a></li>
+						<li><a href="#">对讲机</a></li>
+						<li><a href="#">宽带</a></li>
+						<li><a href="#">数据线</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">电脑/办公</a>
+					<ul style="margin-top: -106px;">
+						<li><a href="#">CPU</a></li>
+						<li><a href="#">主板</a></li>
+						<li><a href="#">显卡</a></li>
+						<li><a href="#">CPU</a></li>
+						<li><a href="#">主板</a></li>
+						<li><a href="#">显卡</a></li>
+						<li><a href="#">CPU</a></li>
+						<li><a href="#">主板</a></li>
+						<li><a href="#">显卡</a></li>
+						<li><a href="#">CPU</a></li>
+						<li><a href="#">主板</a></li>
+						<li><a href="#">显卡</a></li>
+						<li><a href="#">CPU</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">家用电器</a>
+					<ul style="margin-top: -141px;">
+						<li><a href="#">电视</a></li>
+						<li><a href="#">洗衣机</a></li>
+						<li><a href="#">微波炉</a></li>
+						<li><a href="#">冰箱</a></li>
+						<li><a href="#">电视</a></li>
+						<li><a href="#">洗衣机</a></li>
+						<li><a href="#">微波炉</a></li>
+						<li><a href="#">冰箱</a></li>
+						<li><a href="#">电视</a></li>
+						<li><a href="#">洗衣机</a></li>
+						<li><a href="#">微波炉</a></li>
+						<li><a href="#">冰箱</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">手机/运营商/数码</a>
+					<ul style="margin-top: -176px;">
+						<li><a href="#">对讲机</a></li>
+						<li><a href="#">宽带</a></li>
+						<li><a href="#">数据线</a></li>
+						<li><a href="#">对讲机</a></li>
+						<li><a href="#">宽带</a></li>
+						<li><a href="#">数据线</a></li>
+						<li><a href="#">对讲机</a></li>
+						<li><a href="#">宽带</a></li>
+						<li><a href="#">数据线</a></li>
+						<li><a href="#">对讲机</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">电脑/办公</a>
+					<ul style="margin-top: -211px;">
+						<li><a href="#">CPU</a></li>
+						<li><a href="#">主板</a></li>
+						<li><a href="#">显卡</a></li>
+						<li><a href="#">CPU</a></li>
+						<li><a href="#">主板</a></li>
+						<li><a href="#">显卡</a></li>
+						<li><a href="#">CPU</a></li>
+						<li><a href="#">主板</a></li>
+						<li><a href="#">显卡</a></li>
+						<li><a href="#">CPU</a></li>
+						<li><a href="#">主板</a></li>
+						<li><a href="#">显卡</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">家用电器</a>
+					<ul style="margin-top: -246px;">
+						<li><a href="#">电视</a></li>
+						<li><a href="#">洗衣机</a></li>
+						<li><a href="#">微波炉</a></li>
+						<li><a href="#">冰箱</a></li>
+						<li><a href="#">电视</a></li>
+						<li><a href="#">洗衣机</a></li>
+						<li><a href="#">微波炉</a></li>
+						<li><a href="#">冰箱</a></li>
+						<li><a href="#">电视</a></li>
+						<li><a href="#">洗衣机</a></li>
+						<li><a href="#">微波炉</a></li>
+						<li><a href="#">冰箱</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">手机/运营商/数码</a>
+					<ul style="margin-top: -281px;">
+						<li><a href="#">对讲机</a></li>
+						<li><a href="#">宽带</a></li>
+						<li><a href="#">数据线</a></li>
+						<li><a href="#">对讲机</a></li>
+						<li><a href="#">宽带</a></li>
+						<li><a href="#">数据线</a></li>
+						<li><a href="#">对讲机</a></li>
+						<li><a href="#">宽带</a></li>
+						<li><a href="#">数据线</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">电脑/办公</a>
+					<ul style="margin-top: -316px;">
+						<li><a href="#">CPU</a></li>
+						<li><a href="#">主板</a></li>
+						<li><a href="#">显卡</a></li>
+						<li><a href="#">CPU</a></li>
+						<li><a href="#">主板</a></li>
+						<li><a href="#">显卡</a></li>
+						<li><a href="#">CPU</a></li>
+						<li><a href="#">主板</a></li>
+						<li><a href="#">显卡</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">家用电器</a>
+					<ul style="margin-top: -351px;">
+						<li><a href="#">电视</a></li>
+						<li><a href="#">洗衣机</a></li>
+						<li><a href="#">微波炉</a></li>
+						<li><a href="#">冰箱</a></li>
+						<li><a href="#">电视</a></li>
+						<li><a href="#">洗衣机</a></li>
+						<li><a href="#">微波炉</a></li>
+						<li><a href="#">冰箱</a></li>
+						<li><a href="#">电视</a></li>
+						<li><a href="#">洗衣机</a></li>
+						<li><a href="#">微波炉</a></li>
+						<li><a href="#">冰箱</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">手机/运营商/数码</a>
+					<ul style="margin-top: -386px;">
+						<li><a href="#">对讲机</a></li>
+						<li><a href="#">宽带</a></li>
+						<li><a href="#">数据线</a></li>
+						<li><a href="#">对讲机</a></li>
+						<li><a href="#">宽带</a></li>
+						<li><a href="#">数据线</a></li>
+						<li><a href="#">对讲机</a></li>
+						<li><a href="#">宽带</a></li>
+						<li><a href="#">数据线</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">电脑/办公</a>
+					<ul style="margin-top: -421px;">
+						<li><a href="#">CPU</a></li>
+						<li><a href="#">主板</a></li>
+						<li><a href="#">显卡</a></li>
+						<li><a href="#">CPU</a></li>
+						<li><a href="#">主板</a></li>
+						<li><a href="#">显卡</a></li>
+						<li><a href="#">CPU</a></li>
+						<li><a href="#">主板</a></li>
+						<li><a href="#">显卡</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">家用电器</a>
+					<ul style="margin-top: -456px;">
+						<li><a href="#">电视</a></li>
+						<li><a href="#">洗衣机</a></li>
+						<li><a href="#">微波炉</a></li>
+						<li><a href="#">冰箱</a></li>
+						<li><a href="#">电视</a></li>
+						<li><a href="#">洗衣机</a></li>
+						<li><a href="#">微波炉</a></li>
+						<li><a href="#">冰箱</a></li>
+						<li><a href="#">电视</a></li>
+						<li><a href="#">洗衣机</a></li>
+						<li><a href="#">微波炉</a></li>
+						<li><a href="#">冰箱</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">手机/运营商/数码</a>
+					<ul style="margin-top: -491px;">
+						<li><a href="#">对讲机</a></li>
+						<li><a href="#">宽带</a></li>
+						<li><a href="#">数据线</a></li>
+						<li><a href="#">对讲机</a></li>
+						<li><a href="#">宽带</a></li>
+						<li><a href="#">数据线</a></li>
+						<li><a href="#">对讲机</a></li>
+						<li><a href="#">宽带</a></li>
+						<li><a href="#">数据线</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		</div>
+
+		<div id="main">
+			<!--图片轮播 圆点-->
+			<div id="tab1">
+				<a href="#">
+				<img id="myImg" src="../img/1.jpg"  />
+				</a>
+			<ul id="picture">
+				<li onmouseover="changeImage(0)" id="y"></li>
+				<li onmouseover="changeImage(1)" id="y"></li>
+				<li onmouseover="changeImage(2)" id="y"></li>
+				<li onmouseover="changeImage(3)" id="y"></li>
+				<li onmouseover="changeImage(4)" id="y"></li>
+				<li onmouseover="changeImage(5)" id="y"></li>
+				<li onmouseover="changeImage(6)" id="y"></li>
+				<li onmouseover="changeImage(7)" id="y"></li>
+			</ul>
+				
+			</div>
+			<div id="main_left">
+				<a href="#">
+				<img src="../img/main_left.jpg" width="306px" height="196px" />
+				</a>
+			</div>
+			<div id="main_right">
+				<a href="#">
+				<img src="../img/main_right.jpg" width="306px" height="196px" />
+				</a>
+			</div>
+			
+		</div>
+		
+		<div id="right">
+			<img src="../img/picture2.png" width="178px" />
+			<a href="注册表单.html">
+				<img src="../img/picture3.png" width="138px" height="40px" style="margin: 0px auto; border: 1px solid red;" />
+			</a>
+			<img src="../img/picture1.png" width="178px" />
+			
+		</div>
+
+		<div id="daojishi">
+			<span style="font-size: 24px;">&nbsp;&nbsp;京 东 秒 杀</span>&nbsp;&nbsp;
+			<span style="font-size: 15px;">总有你想不到的低价</span>
+			<div id="CountMsg" class="HotDate" style="float: right; text-align: center;"> 
+				当前场次
+				<span id="t_h">00</span>： 
+				<span id="t_m">00</span>：
+				<span id="t_s">00</span> 
+				后结束抢购
+			</div> 
+		</div>
+		<div id="footer">
+			<a href="#">
+			<img src="../img/footer1.jpg" id="c" />
+			</a>
+			<a href="#">
+			<img src="../img/footer2.jpg" id="c"/>
+			</a>
+			<a href="#">
+			<img src="../img/footer3.jpg" id="c"/>
+			</a>
+			<a href="#">
+			<img src="../img/footer4.jpg" id="c"/>
+			</a>
+			<a href="#">
+			<img src="../img/footer5.jpg" id="c"/>
+			</a>
+		</div>
+		</div>
+	</body>
+	
+</html>

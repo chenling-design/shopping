@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<style type="text/css">
+			#myForm1{
+				border: 0px solid gainsboro;
+				margin:0px auto;
+				width: 300px;
+			}
+			#myForm{
+				margin:0px auto;
+			}
+			#name1,#pwd1,#pwd2,#pwd3,#yanzhengma,#phone,#zc{
+				border: 1px solid darkgray;
+				width: 350px;
+				height: 50PX;
+				margin: 0px auto;
+			}
+			input{
+				height: 47px;
+				outline:medium;
+				border: none;
+			}	
+		</style>
+		<script type="text/javascript">			
+			function clearNameFeild(field){	// 获得焦点
+				field.placeholder = "";
+				var tip = document.getElementById("nameTip");
+				tip.innerText = "支持中文，字符，数字";
+				tip.style.display= "block";				
+			}
+			
+			// 如果长度为0，用户没填写。
+			// 如果长度在4-20之间，验证通过。
+			// 其它视为未通过。
+			function checkNameField(field){	// 失去焦点
+				var tip = document.getElementById("nameTip");				
+				if(field.value.length==0){
+					field.placeholder = "填写用户名";
+					//tip.style.color = "gray";
+					tip.style.display= "none";
+					return false;
+				} else if(field.value.length >=4 && field.value.length <=20){
+					tip.innerText = "验证通过。";
+					tip.style.color = "blue";
+					tip.style.display= "block";
+					return true;
+				} else {
+					tip.innerText = "用户名格式错误。。";
+					tip.style.color = "red";
+					tip.style.display= "block";
+					return false;
+				}
+			}
+			
+			
+			function clearPasswordFeild(field){
+				field.placeholder = "";
+				var tip = document.getElementById("passwordTip");
+				tip.innerText = "请填写8位以上密码。";
+				tip.style.display= "block";				
+			}
+			
+			function checkPasswordFeild(field){
+				var tip = document.getElementById("passwordTip");				
+				if(field.value.length==0){
+					field.placeholder = "填写密码";
+					//tip.style.color = "gray";
+					tip.style.display= "none";
+					return false;
+				} else if(field.value.length >=8 && field.value.length <=16){
+					tip.innerText = "验证通过。";
+					tip.style.color = "blue";
+					tip.style.display= "block";
+					return true;
+				} else {
+					tip.innerText = "密码格式错误。";
+					tip.style.color = "red";
+					tip.style.display= "block";
+					return false;
+				}			
+			}
+			
+			
+			// onsumit所对应的响应代码，应能控制表单是否可以提交；
+			// 所以，系统规定，这段应该返回一个布尔值，供我们判断（是否提交表单）；
+			// true，则提交，否则，就不提交；
+			// 同时，在这段代码中，我们应该去验证表单的数据是否正确。
+			function validateField(thisform){
+				// 验证用户名；
+				var nameObj = document.getElementById("userName");				
+				if(!checkNameField(nameObj)){
+					nameObj.focus();
+					return false;
+				}
+				
+				var passwordObj = document.getElementById("userPassword");	
+				if(!checkPasswordFeild(passwordObj)){
+					passwordObj.focus();
+					return false;
+				}
+				
+				// 验证密码：
+				// 同上；				
+				return true;	// 不提交；
+			}
+			
+			function g(){
+				return confirm("当前表单数据将被清空，是否继续？");
+			}
+			function f5(shuzi){
+				shuzi.placeholder = "";
+			}
+			function f6(shuzi){
+				shuzi.placeholder = "请再次输入密码";
+			}
+			function f7(shuzi){
+				shuzi.placeholder = "";
+			}
+			function f8(shuzi){
+				shuzi.placeholder = "建议使用常用手机";
+			}
+			function f9(shuzi){
+				shuzi.placeholder = "";
+			}
+			function f10(shuzi){
+				shuzi.placeholder = "请输入验证码";
+			}
+			function f11(shuzi){
+				shuzi.placeholder = "";
+			}
+			function f12(shuzi){
+				shuzi.placeholder = "请输入手机验证码";
+			}
+			
+				
+		</script>
+	</head>
+	<body>
+		<div>
+			<img src="../img/注册head.png" style="width: 1300px; height: 100px;" />
+		</div>
+		<div id="myForm1" style="float: left; margin-left: 400px; margin-top: 80px;">
+		<form id="myForm" method="get" action="success.html" onsubmit="return validateField(this)" onreset="return g()" >
+			<div id="name1">
+				<label for="userName">用户名称：</label>
+				<input onfocus="clearNameFeild(this)" onblur="checkNameField(this)" placeholder="填写用户名" class="field" type="text" id="userName" name="userName"  />
+			</div>
+			<div class="input-tip" style="height: 20px; width: 400px; font-size: 14px;">
+				<span id="nameTip" ></span>
+			</div>
+			<div id="pwd1">
+				<label for="userPassword">设置密码：</label>
+				<input class="field" onfocus="clearPasswordFeild(this)" onblur="checkPasswordFeild(this)" placeholder="填写密码" type="password" id="userPassword" name="userPassword"  />
+			</div>
+			<div class="input-tip" style="height: 20px; font-size: 14px;">
+				<span id="passwordTip"></span>	
+			</div>
+			<div id="pwd2">
+			<label>确认密码：</label>
+			<input type="password" id="shuzi2" onblur="f6(this)" onfocus="f5(this)" placeholder="请再次输入密码" />
+			
+			</div>	
+			<div style="height: 20px;">
+				
+			</div>
+			<div id="pwd3">
+			<label>
+				中国0086
+				<select id="select1">
+					<option>1</option>
+					<option>2</option>
+				</select>
+			</label>
+			<input type="password" id="shuzi3" onblur="f8(this)" onfocus="f7(this)" placeholder="建议使用常用手机" />
+			
+	`		</div>
+			<div id="dialog4" style="height: 10px;">
+		        	
+		    </div>
+			<br />
+			<div id="yanzhengma">
+				<label>验证码：</label>
+				<input type="text" id="yan" onblur="f10(this)" onfocus="f9(this)" placeholder="请输入验证码" />
+				<div style=" border-radius: 3px; font-family: 'bradley hand itc'; float: right; width: 70px; height: 40px; background-color: #000000; color: red; text-align: center;font-size: 28px;">
+					EFCD
+				</div>
+			</div>
+			<div id="dialog5" style="height: 10px;">
+		        	
+		    </div>
+			<br />
+			<div id="phone">
+				<label>手机验证码：</label>
+				<input type="text" id="phone1" onblur="f12(this)" onfocus="f11(this)" placeholder="请输入手机验证码" />
+				<button type="button" style="float: right; width: 60px; height: 40px;">获取验证码</button>
+			</div>
+			<div id="dialog6" style="height: 10px;">
+		        	
+		    </div>
+			<br />
+			<div id="zhuce">
+				<button type="submit" id="zc" value="立即注册" style=" background-color: red; color: white; width: 350px; height: 50px; margin: 0px auto;">立即注册</button>
+			</div>			
+		</form>
+		</div>
+		<div style="float: right; margin-right: 20px; margin-top: 80px;">
+			<img src="../img/注册right.png" />
+		</div>
+		<div>
+			<img src="../img/注册foot.png" style="clear: both;" />
+		</div>
+	</body>
+</html>
